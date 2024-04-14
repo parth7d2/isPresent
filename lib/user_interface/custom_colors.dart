@@ -10,8 +10,8 @@ class CustomColors {
   static const Color onPrimaryContainer_ =  Color(4294967295);
   static const Color secondary_ =  Color(4281157943);
   static const Color onSecondary_ =  Color(4294967295);
-  static const Color secondaryContainer_ =  Color(4284382055);
-  static const Color onSecondaryContainer_ =  Color(4294967295);
+  static const Color secondaryContainer_ =  Color(0xFFCEEFD6);
+  static const Color onSecondaryContainer_ =  Color(0xFF34513E);
   static const Color tertiary_ =  Color(4281612667);
   static const Color onTertiary_ =  Color(4294967295);
   static const Color tertiaryContainer_ =  Color(4283981217);

@@ -3,12 +3,13 @@ import 'package:now_won/user_interface/custom_colors.dart';
 import 'package:now_won/user_interface/font_util.dart';
 
 class UiHelper {
-  static Widget custom_Button(VoidCallback voidCallback, String text) {
+  static Widget custom_Button(VoidCallback voidCallback, String text,
+      {double customWidth = 350.0, double customHeight = 60.0}) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: SizedBox(
-        width: 350.0,
-        height: 60.0,
+        width: customWidth,
+        height: customHeight,
         child: ElevatedButton(
             onPressed: () {
               voidCallback();

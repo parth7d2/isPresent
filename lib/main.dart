@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:now_won/account_screens/home_screen.dart';
-import 'package:now_won/account_screens/login_screen.dart';
-import 'package:now_won/account_screens/signup_screen.dart';
-import 'package:now_won/user_interface/theme.dart';
+import 'package:now_won/major_screens/splash_screen.dart';
 import 'package:now_won/user_interface/custom_colors.dart';
 
-import 'account_screens/profile_screen.dart';
-import 'account_screens/shop_screens.dart';
 
 
 
@@ -25,13 +20,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // theme: MaterialTheme(TextTheme()).light(),
       theme: ThemeData(
-        primaryColor: CustomColors.onPrimary_,
+        primaryColor: CustomColors.surface_,
         colorScheme: ColorScheme.light(
           primary: CustomColors.primary_,
           secondary: CustomColors.secondary_,
         ),
       ),
-      home: const ShopScreen(),
+      home: const SplashScreen(),
     );
   }
 }
