@@ -16,9 +16,9 @@ class CustomColors {
   static const Color onTertiary_ =  Color(4294967295);
   static const Color tertiaryContainer_ =  Color(4283981217);
   static const Color onTertiaryContainer_ =  Color(4294967295);
-  static const Color error_ =  Color(4287365129);
+  static const Color error_ =  Color(0xFFBA1A1A);
   static const Color onError_ =  Color(4294967295);
-  static const Color errorContainer_ =  Color(4292490286);
+  static const Color errorContainer_ =  Color(0xFFFFDAD6);
   static const Color onErrorContainer_ =  Color(4294967295);
   static const Color background_ =  Color(4294441716);
   static const Color onBackground_ =  Color(4279770393);
@@ -53,5 +53,6 @@ class CustomColors {
   static const Color surfaceContainerHigh_ =  Color(4293323235);
   static const Color surfaceContainerHighest_ = Color(4292928734);
   static const Color neutral_variant60 = Color(0xFF8C928C);
+  static const Color neutral_variant10 = Color(0xFF171D18);
 // Add more custom colors as needed
 }

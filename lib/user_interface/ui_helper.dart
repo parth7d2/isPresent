@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:now_won/user_interface/custom_colors.dart';
 import 'package:now_won/user_interface/font_util.dart';
@@ -43,7 +44,7 @@ class UiHelper {
           focusNode: focusNode_,
           cursorColor: CustomColors.primary_,
           cursorRadius: const Radius.circular(1.0),
-          style: CaptionBold(),
+          style: Headline(size: 18),
           decoration: InputDecoration(
               fillColor: CustomColors.surfaceContainerHigh_,
               filled: true,
@@ -54,7 +55,7 @@ class UiHelper {
               contentPadding:
                   const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               hintText: string,
-              hintStyle: CaptionBold(tc: CustomColors.neutral_variant60, size: 17),
+              hintStyle: Headline(tc: CustomColors.neutral_variant60, size: 17),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
                   borderSide:
@@ -76,9 +77,9 @@ class UiHelper {
           return AlertDialog(
             backgroundColor: CustomColors.surfaceContainerHigh_,
             surfaceTintColor: CustomColors.surfaceContainerHigh_,
-            title: Text(message),
+            title: Text(message, style: smallTextBold(tc: CustomColors.error_, size: 20.0),),
             actions: [
-              text_button(() {
+              text_button(context,() {
                 Navigator.pop(context);
               }, "Ok", 15)
             ],
@@ -86,7 +87,7 @@ class UiHelper {
         });
   }
 
-  static Widget text_button(
+  static Widget text_button(BuildContext context,
       VoidCallback voidCallback, String text, double fontsize) {
     return TextButton(
         onPressed: () {
@@ -99,7 +100,7 @@ class UiHelper {
         child: Stack(children: [
           Text(
             text,
-            style: CaptionBold(size: fontsize),
+            style: smallTextBold(size: fontsize),
           ),
           Positioned(
             bottom: 0.0,
@@ -118,23 +119,29 @@ class UiHelper {
         ]));
   }
 
-  static write_Dialog(BuildContext context, String message, String hint){
-    return showDialog(context: context, builder: (BuildContext context) {
+  static write_Dialog(BuildContext contextt,TextEditingController textEditingController, String message, String hint){
+    return showDialog(context: contextt, builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: CustomColors.surfaceContainerLowest_,
         surfaceTintColor: CustomColors.surfaceContainerLowest_,
-        title: Text(message, style: CaptionBold(),),
+        title: Text(message, style: smallTextBold(),),
         content: TextField(
+          controller: textEditingController,
           cursorColor: CustomColors.primary_,
           cursorRadius: const Radius.circular(1.0),
-          style: CaptionBold(),
+          style: smallTextBold(),
+          onSubmitted: (_) {
+            resetPass(context, textEditingController.text.toString());
+            textEditingController.clear();
+            Navigator.pop(context);
+          },
           decoration: InputDecoration(
               fillColor: CustomColors.surfaceContainerHigh_,
               filled: true,
               contentPadding:
               const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               hintText: hint,
-              hintStyle: CaptionBold(tc: CustomColors.neutral_variant60, size: 17),
+              hintStyle: smallTextBold(tc: CustomColors.neutral_variant60, size: 17),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(14),
                   borderSide:
@@ -146,7 +153,9 @@ class UiHelper {
               )),
         ),
         actions: [
-          text_button(() {
+          text_button(context,()  {
+            resetPass(context, textEditingController.text.toString());
+            textEditingController.clear();
             Navigator.pop(context);
           }, "Ok", 15)
         ],
@@ -154,9 +163,26 @@ class UiHelper {
     });
   }
 
+  static void resetPass(BuildContext context, String email) async {
+    if(email==""){
+      UiHelper.customAlertBox(context, "Enter your valid Email");
+    }else{
+      try{
+        await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+      }on FirebaseAuthException catch(ex){
+        if(ex.code == 'user-not-found'){
+          UiHelper.customAlertBox(context, "The entered email is not registered.");
+        }else {
+          UiHelper.customAlertBox(context, ex.code.toString());
+        }
+      }
+    }
+  }
   // static Widget customContainer(double theWidth, double theHight, Color theColor, ){
   //   return Container(
   //
   //   )
   // }
 }
+
+

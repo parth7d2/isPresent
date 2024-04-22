@@ -17,10 +17,10 @@ TextStyle Subhead({Color tc = CustomColors.primary_, double size = 21}) {
   return TextStyle(fontFamily: 'FontRegular', fontSize: size, color: tc);
 }
 
-TextStyle Caption({Color tc = CustomColors.primary_, double size = 18}) {
+TextStyle smallText({Color tc = CustomColors.primary_, double size = 18}) {
   return TextStyle(fontFamily: 'FontRegular', fontSize: size, color: tc);
 }
 
-TextStyle CaptionBold({Color tc = CustomColors.primary_, double size = 18}) {
+TextStyle smallTextBold({Color tc = CustomColors.primary_, double size = 18}) {
   return TextStyle(fontFamily: 'FontBold', fontSize: size, color: tc);
 }

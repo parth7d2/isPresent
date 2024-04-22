@@ -7,7 +7,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:now_won/account_screens/login_screen.dart';
-import 'package:now_won/navigation_screens/hame_page.dart';
+import 'package:now_won/navigation_screens/home_screen.dart';
 import 'package:now_won/user_interface/font_util.dart';
 import 'package:now_won/user_interface/ui_helper.dart';
 
@@ -72,7 +72,7 @@ class _MyAppState extends State<SplashScreen> {
                     ),
                     FadeInDown(delay:const Duration(milliseconds: 1600), animate: animate,
                       child: UiHelper.custom_Button(() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomePage()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
                       }, "User" ,customWidth: 170.0, customHeight: 60),
                     )
                   ],

@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -23,211 +25,58 @@ class _HomeScreenState extends State<HomeScreen> {
 
   int _currentIndex = 0;
 
-  late bool isSelected;
-  List<Widget> pages = [
-    // Stack(children: [
-    //   SingleChildScrollView(
-    //     child: Column(
-    //       children: [
-    //         Container(
-    //           child: Image(
-    //             image: AssetImage('assets/images/screenshot.png'),
-    //           ),
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.blue,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.red,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.green,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.yellow,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.purpleAccent,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.grey,
-    //         ),
-    //         Container(
-    //           width: double.infinity,
-    //           height: 300,
-    //           color: Colors.orange,
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    //   FrostedGlassBox(
-    //     theWidth: double.infinity,
-    //     theHeight: 130.0,
-    //     theCorner: 0.0,
-    //     theChild: SizedBox(),
-    //     theOpacity: 0.7,
-    //     theColor: CustomColors.surface_,
-    //   ),
-    //   Positioned(
-    //     top: 0.0,
-    //     left: 0.0,
-    //     right: 0.0,
-    //     child: Padding(
-    //       padding: const EdgeInsets.only(left: 16.0, right: 16.0, top: 48.0),
-    //       child: Row(
-    //         mainAxisAlignment: MainAxisAlignment.center,
-    //         children: [
-    //           Container(
-    //             width: 56.0,
-    //             height: 56.0,
-    //             child: Icon(Icons.history),
-    //             decoration: BoxDecoration(
-    //               borderRadius: BorderRadius.circular(28.0),
-    //               color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //             ),
-    //           ),
-    //           SizedBox(
-    //             width: 10.0,
-    //           ),
-    //           Container(
-    //             width: 230.0,
-    //             height: 56.0,
-    //             child: Center(
-    //               child: Text(
-    //                 "Search",
-    //                 style: TextStyle(color: Colors.black54, fontSize: 24.0),
-    //               ),
-    //             ),
-    //             decoration: BoxDecoration(
-    //               borderRadius: BorderRadius.circular(28.0),
-    //               color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //             ),
-    //           ),
-    //           SizedBox(
-    //             width: 10.0,
-    //           ),
-    //           Container(
-    //             width: 56.0,
-    //             height: 56.0,
-    //             child: Icon(Icons.person),
-    //             decoration: BoxDecoration(
-    //               borderRadius: BorderRadius.circular(28.0),
-    //               color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //             ),
-    //           ),
-    //         ],
-    //       ),
-    //     ),
-    //   ),
-    //   Positioned(
-    //       left: 0.0,
-    //       right: 0.0,
-    //       bottom: 120.0,
-    //       child: FrostedGlassBox(
-    //         theWidth: double.infinity,
-    //         theHeight: 100.0,
-    //         theCorner: 0.0,
-    //         theChild: SizedBox(),
-    //         theOpacity: 0.7,
-    //         theColor: CustomColors.surface_,
-    //       )),
-    //   Positioned(
-    //     left: 16.0,
-    //     right: 16.0,
-    //     bottom: 140.0,
-    //     child: Row(
-    //       mainAxisAlignment: MainAxisAlignment.center,
-    //       children: [
-    //         Container(
-    //           width: 56.0,
-    //           height: 56.0,
-    //           child: Icon(Icons.bookmark),
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(28.0),
-    //             color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //           ),
-    //         ),
-    //         SizedBox(
-    //           width: 10.0,
-    //         ),
-    //         Container(
-    //           width: 230.0,
-    //           height: 56.0,
-    //           child: Center(
-    //             child: Text(
-    //               "Category",
-    //               style: TextStyle(color: Colors.black54, fontSize: 24.0),
-    //             ),
-    //           ),
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(28.0),
-    //             color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //           ),
-    //         ),
-    //         SizedBox(
-    //           width: 10.0,
-    //         ),
-    //         Container(
-    //           width: 56.0,
-    //           height: 56.0,
-    //           child: Icon(Icons.notifications_active_rounded),
-    //           decoration: BoxDecoration(
-    //             borderRadius: BorderRadius.circular(28.0),
-    //             color: Color(0xFF3A4B3F).withOpacity(0.16),
-    //           ),
-    //         ),
-    //       ],
-    //     ),
-    //   ),
-    //
-    // ]),
-    // Center(
-    //   child: Text(
-    //     'Category',
-    //     style: LargeTitel(),
-    //   ),
-    // ),
-    // Center(
-    //   child: Text(
-    //     'Saved',
-    //     style: LargeTitel(),
-    //   ),
-    // ),
-    // Center(
-    //   child: Text(
-    //     'Reminder',
-    //     style: LargeTitel(),
-    //   ),
-    // ),
-    // Center(
-    //   child: Text(
-    //     'History',
-    //     style: LargeTitel(),
-    //   ),
-    // ),
-    HomePage(),
-    TypesPage(),
-    SavedPage(),
-    NotifyPage(),
-    HistoryPage(),
-  ];
+  late User _currentUser;
+  late Map<String, dynamic> _currentUserData = {};
+
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize user data when the screen loads
+    _initUserData();
+  }
+
+  Future<void> _initUserData() async {
+    // Get current user
+    _currentUser = FirebaseAuth.instance.currentUser!;
+    // Fetch user profile data
+    DocumentSnapshot userProfile = await FirebaseFirestore.instance
+        .collection('Merchants')
+        .doc(_currentUser.uid)
+        .get();
+    _currentUserData = userProfile.data() as Map<String, dynamic>;
+    setState(() {}); // Refresh UI with fetched data
+  }
+
+  // List<Widget> pages = [
+  //   HomePage(merchantName: '', mobNo: '', email: '', shopName: '', shopImage: '', latitude: '', longitude: '', shopStatus: false,),
+  //   TypesPage(),
+  //   SavedPage(),
+  //   NotifyPage(),
+  //   HistoryPage(),
+  // ];
+
+  Widget getPage(int index) {
+    switch (index){
+      case 0:
+        return HomePage(currentUserData: _currentUserData,);
+      case 1:
+        return const TypesPage();
+      case 2:
+        return const SavedPage();
+      case 3:
+        return const NotifyPage();
+      case 4:
+        return const HistoryPage();
+      default:
+        return HomePage(currentUserData: _currentUserData);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: pages[_currentIndex],
+      body: getPage(_currentIndex),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
           overlayColor: MaterialStateProperty.all(
@@ -236,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
           indicatorColor: CustomColors.secondaryContainer_,
           labelTextStyle: MaterialStateProperty.resolveWith<TextStyle>(
                 (Set<MaterialState> states) => states.contains(MaterialState.selected)
-                ? CaptionBold(size: 14)
+                ? smallTextBold(size: 14)
                 : Headline(tc: CustomColors.onSurfaceVariant_ ,size: 14,),
           ),
           // iconTheme: MaterialStateProperty.all(
