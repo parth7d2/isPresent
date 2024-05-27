@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:now_won/account_screens/login_screen.dart';
 import 'package:now_won/account_screens/shop_screens.dart';
@@ -45,7 +43,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           return AlertDialog(
             backgroundColor: Colors.white,
             surfaceTintColor: Colors.white,
-            title: Text("Pick Image From"),
+            title: const Text("Pick Image From"),
             content: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -54,16 +52,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     pickImage(ImageSource.camera);
                     Navigator.of(context).pop();
                   },
-                  leading: Icon(Icons.camera_alt_outlined),
-                  title: Text("Camera"),
+                  leading: const Icon(Icons.camera_alt_outlined),
+                  title: const Text("Camera"),
                 ),
                 ListTile(
                   onTap: () {
                     pickImage(ImageSource.gallery);
                     Navigator.of(context).pop();
                   },
-                  leading: Icon(Icons.image_outlined),
-                  title: Text("Gallery"),
+                  leading: const Icon(Icons.image_outlined),
+                  title: const Text("Gallery"),
                 )
               ],
             ),
@@ -76,7 +74,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.only(left: 16.0, right: 16.0),
+        minimum: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: SingleChildScrollView(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +82,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             const SizedBox(
               height: 40.0,
             ),
-            Container(
+            SizedBox(
                 width: double.infinity,
                 height: 170,
                 child: Stack(children: [
@@ -113,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           radius: 57,
                           backgroundImage: FileImage(File(pickedImage!.path)),
                         )
-                        : CircleAvatar(
+                        : const CircleAvatar(
                           backgroundColor: CustomColors.surfaceContainerHigh_,
                           radius: 57,
                           child: Icon(Icons.store_mall_directory, size: 42,color: CustomColors.primary_,)
@@ -153,7 +151,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             UiHelper.textfield(conf_password, focusNode6, "Conform Password",
                 Icons.lock, false),
 
-            SizedBox(
+            const SizedBox(
               height: 40.0,
             ),
             Row(

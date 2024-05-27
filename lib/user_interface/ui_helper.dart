@@ -178,11 +178,38 @@ class UiHelper {
       }
     }
   }
-  // static Widget customContainer(double theWidth, double theHight, Color theColor, ){
-  //   return Container(
-  //
-  //   )
-  // }
+
+
+  static Widget dropDownMenu({String selectedOption = 'Select Option', required List<String> selectMenu,}){
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Column(
+          children: [
+            Container(
+              height: 40,
+              width: 130,
+              decoration: BoxDecoration(
+                color: CustomColors.surfaceContainerHighest_,
+                borderRadius: BorderRadius.circular(20.0)
+              ),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(selectedOption, style: Headline(size: 14),),
+                    const Icon(Icons.keyboard_arrow_down)
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+
+    );
+  }
 }
 
 

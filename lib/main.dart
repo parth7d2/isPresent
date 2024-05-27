@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:now_won/account_screens/check_merchant.dart';
-import 'package:now_won/major_screens/splash_screen.dart';
 import 'package:now_won/user_interface/custom_colors.dart';
 
 import 'firebase_options.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
       // theme: MaterialTheme(TextTheme()).light(),
       theme: ThemeData(
         primaryColor: CustomColors.surface_,
-        colorScheme: ColorScheme.light(
+        colorScheme: const ColorScheme.light(
           primary: CustomColors.primary_,
           secondary: CustomColors.secondary_,
         ),

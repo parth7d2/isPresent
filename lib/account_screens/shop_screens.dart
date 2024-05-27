@@ -4,9 +4,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:now_won/navigation_screens/home_screen.dart';
 import 'package:now_won/user_interface/custom_colors.dart';
 import 'package:now_won/user_interface/ui_helper.dart';
@@ -71,7 +69,7 @@ class _ShopScreenState extends State<ShopScreen> {
           uploadData(widget.pickedImage, widget.email).then((_) {
             // This block executes after fetchData() completes successfully
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
+              const SnackBar(
                 content: Text('Your Shop is Live'),
                 backgroundColor: CustomColors.inverseSurface_,
               ),
@@ -91,7 +89,7 @@ class _ShopScreenState extends State<ShopScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.only(left: 16.0, right: 16.0),
+        minimum: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -164,6 +162,14 @@ class _ShopScreenState extends State<ShopScreen> {
         "MerchantName":merchantName,
         "MobNo" : mobNo,
         "Email" : email,
+        "ShopName" : shopName,
+        "Latitude" : Latitude,
+        "Longitude" : Longitude,
+        "Status" : status,
+      }).then((value) {
+        log("Data Inserted");
+      });
+      FirebaseFirestore.instance.collection("Locations").doc(shopName).set({
         "ShopName" : shopName,
         "Latitude" : Latitude,
         "Longitude" : Longitude,

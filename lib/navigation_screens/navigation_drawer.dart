@@ -1,8 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class NavigationDrawerr extends StatefulWidget{
-  const NavigationDrawerr({Key? key}) : super (key: key);
+  const NavigationDrawerr({super.key});
 
   @override
   State<NavigationDrawerr> createState() => _NavigationDrawerState();
@@ -34,28 +33,28 @@ class _NavigationDrawerState extends State<NavigationDrawerr> {
     runSpacing: 8.0,
     children: [
       ListTile(
-        leading: Icon(Icons.home),
+        leading: const Icon(Icons.home),
         title: const Text('Home'),
         onTap: (){},
       ),
       ListTile(
-        leading: Icon(Icons.home),
+        leading: const Icon(Icons.home),
         title: const Text('Home'),
         onTap: (){},
       ),
       ListTile(
-        leading: Icon(Icons.home),
+        leading: const Icon(Icons.home),
         title: const Text('Home'),
         onTap: (){},
       ),
       const Divider(color: Colors.black54,),
       ListTile(
-        leading: Icon(Icons.home),
+        leading: const Icon(Icons.home),
         title: const Text('Home'),
         onTap: (){},
       ),
       ListTile(
-        leading: Icon(Icons.home),
+        leading: const Icon(Icons.home),
         title: const Text('Home'),
         onTap: (){},
       ),

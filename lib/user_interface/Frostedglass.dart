@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'dart:ui';
@@ -7,7 +6,7 @@ import 'package:now_won/user_interface/custom_colors.dart';
 
 class FrostedGlassBox extends StatelessWidget {
   const FrostedGlassBox(
-      {Key? key,
+      {super.key,
       required this.theWidth,
       required this.theHeight,
       this.theColor = Colors.white,
@@ -16,8 +15,7 @@ class FrostedGlassBox extends StatelessWidget {
       this.theBrightness = 0.1,
       this.theOpacity = 0.6,
       this.theBorderOpacity = 0.7,
-      required this.theChild})
-      : super(key: key);
+      required this.theChild});
 
   final theWidth;
   final theHeight;

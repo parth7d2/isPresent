@@ -1,10 +1,6 @@
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/painting.dart';
-import 'package:flutter/rendering.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:now_won/account_screens/login_screen.dart';
 import 'package:now_won/navigation_screens/home_screen.dart';
@@ -67,12 +63,12 @@ class _MyAppState extends State<SplashScreen> {
                   children: [
                     FadeInDown(delay:const Duration(milliseconds: 1600), animate: animate,
                       child: UiHelper.custom_Button(() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => LogInScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const LogInScreen()));
                       }, "Merchant", customWidth: 170.0, customHeight: 60),
                     ),
                     FadeInDown(delay:const Duration(milliseconds: 1600), animate: animate,
                       child: UiHelper.custom_Button(() {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> const HomeScreen()));
                       }, "User" ,customWidth: 170.0, customHeight: 60),
                     )
                   ],
@@ -87,7 +83,7 @@ class _MyAppState extends State<SplashScreen> {
 }
 
 class Square extends StatelessWidget {
-  const Square({Key? key}) : super(key: key);
+  const Square({super.key});
   @override
   Widget build(BuildContext context) {
     return Container(

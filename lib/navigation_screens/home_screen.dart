@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:now_won/navigation_screens/hame_page.dart';
+import 'package:now_won/navigation_screens/map_page.dart';
 import 'package:now_won/navigation_screens/history_page.dart';
-import 'package:now_won/navigation_screens/notify_page.dart';
+import 'package:now_won/navigation_screens/home_page.dart';
 import 'package:now_won/navigation_screens/saved_page.dart';
 import 'package:now_won/navigation_screens/types_page.dart';
 import 'package:now_won/user_interface/font_util.dart';
@@ -65,11 +63,11 @@ class _HomeScreenState extends State<HomeScreen> {
       case 2:
         return const SavedPage();
       case 3:
-        return const NotifyPage();
+        return MapPage(currentUserData: _currentUserData,);
       case 4:
         return const HistoryPage();
       default:
-        return HomePage(currentUserData: _currentUserData);
+        return HomePage(currentUserData: _currentUserData,);;
     }
   }
 
@@ -94,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
         ),
         child: NavigationBar(
-          animationDuration: Duration(milliseconds: 700),
+          animationDuration: const Duration(milliseconds: 700),
           selectedIndex: _currentIndex,
           backgroundColor: CustomColors.surfaceContainer_,
           surfaceTintColor: Colors.transparent,
@@ -103,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
               _currentIndex = newIndex;
             });
           },
-          destinations: [
+          destinations: const [
             NavigationDestination(
               selectedIcon: Icon(Icons.home, color: CustomColors.onSecondaryContainer_),
               icon: Icon(Icons.home_outlined, color: CustomColors.onSurfaceVariant_,),
@@ -117,12 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
             NavigationDestination(
               selectedIcon: Icon(Icons.bookmark, color: CustomColors.onSecondaryContainer_),
               icon: Icon(Icons.bookmark_border_outlined, color: CustomColors.onSurfaceVariant_,),
-              label: 'Watchlist',
+              label: 'Saved',
             ),
             NavigationDestination(
-              selectedIcon: Icon(Icons.notifications_active, color: CustomColors.onSecondaryContainer_),
-              icon: Icon(Icons.notifications_active_outlined, color: CustomColors.onSurfaceVariant_,),
-              label: 'Notify',
+              selectedIcon: Icon(Icons.location_on, color: CustomColors.onSecondaryContainer_),
+              icon: Icon(Icons.location_on_outlined, color: CustomColors.onSurfaceVariant_,),
+              label: 'Explore',
             ),
             NavigationDestination(
               selectedIcon: Icon(Icons.history, color: CustomColors.onSecondaryContainer_),

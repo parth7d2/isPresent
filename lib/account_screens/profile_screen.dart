@@ -1,7 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:now_won/account_screens/manage_account_screen.dart';
 import 'package:now_won/account_screens/signup_screen.dart';
@@ -46,7 +44,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     // final double pahodai = double.infinity;
     return Scaffold(
       body: SafeArea(
-        minimum: EdgeInsets.only(left: 16.0, right: 16.0),
+        minimum: const EdgeInsets.only(left: 16.0, right: 16.0),
         child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Positioned(
                           top: 0.0,
                           left: 8.0,
-                          child: Container(
+                          child: SizedBox(
                             width: 240.0,
                               child:widget.currentUserData['ShopName']==null?Text("Your\nName", style: LargeTitel(size: 36)):
                               Text(widget.currentUserData['ShopName'], style: LargeTitel(size: 36))
@@ -133,41 +131,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ListTile(
-                            leading: Icon(Icons.store_mall_directory,size: 28, color: CustomColors.primary_,),
+                            leading: const Icon(Icons.store_mall_directory,size: 28, color: CustomColors.primary_,),
                             title: Text('Manage Account', style: Headline(size: 21,tc: CustomColors.neutral_variant10),),
                             subtitle: Text('Operate Members, Manage Products, Edit Info, Logout and Delete Account', style: smallText(tc: CustomColors.onSurfaceVariant_, size: 14)),
-                            trailing: Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
+                            trailing: const Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
                             onTap: (){
                               Navigator.push(context, MaterialPageRoute(builder: (context)=>const ManageAccountScreen()));
                             },
                           ),
                           const Divider(height: 0,color: CustomColors.outlineVariant_,),
                           ListTile(
-                            leading: Icon(Icons.settings,size: 28, color: CustomColors.primary_,),
+                            leading: const Icon(Icons.settings,size: 28, color: CustomColors.primary_,),
                             title: Text('Settings', style: Headline(size: 21, tc: CustomColors.neutral_variant10),),
                             subtitle: Text('Apparence, Term and Condition, Privacy Policy and Notification Settings',style: smallText(tc:CustomColors.onSurfaceVariant_, size: 14),),
-                            trailing: Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
+                            trailing: const Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
                           ),
                           const Divider(height: 0, color: CustomColors.outlineVariant_,),
                           ListTile(
-                            leading: Icon(Icons.call,size: 28,color: CustomColors.primary_,),
+                            leading: const Icon(Icons.call,size: 28,color: CustomColors.primary_,),
                             title: Text('Contact Us', style: Headline(size: 21, tc: CustomColors.neutral_variant10),),
                             subtitle: Text('Help, Give Feedback, Submit BugReport', style: smallText(tc:CustomColors.onSurfaceVariant_, size: 14),),
-                            trailing: Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
+                            trailing: const Icon(Icons.navigate_next,size:24, color: CustomColors.primary_,),
                           ),
                           const Divider(height: 0,color: CustomColors.outlineVariant_,),
                           ListTile(
-                            leading: Icon(Icons.share,size: 28, color: CustomColors.primary_,),
+                            leading: const Icon(Icons.share,size: 28, color: CustomColors.primary_,),
                             title: Text('ShareApp', style: Headline(size: 21, tc: CustomColors.neutral_variant10),),
                             subtitle: Text('Please, Share this App with your Friends and Family', style: smallText(tc: CustomColors.onSurfaceVariant_,size: 14),),
                             trailing: const Icon(Icons.arrow_outward,size:20, color: CustomColors.primary_,),
                           ),
                           const Divider(height: 0, color: CustomColors.outlineVariant_,),
                           ListTile(
-                            leading: Icon(Icons.star_rate, size: 28, color:CustomColors.primary_,),
+                            leading: const Icon(Icons.star_rate, size: 28, color:CustomColors.primary_,),
                             title: Text('Rate Us', style: Headline(size: 21,tc:CustomColors.neutral_variant10),),
                             subtitle: Text('Please rate us on PlayStore or AppStore, which can help others to know this app', style: smallText(tc:CustomColors.onSurfaceVariant_, size: 14),),
-                            trailing: Icon(Icons.arrow_outward,size:20, color: CustomColors.primary_,),
+                            trailing: const Icon(Icons.arrow_outward,size:20, color: CustomColors.primary_,),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 8.0, top: 16.0),

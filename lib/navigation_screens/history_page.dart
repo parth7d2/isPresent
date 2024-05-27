@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:now_won/user_interface/font_util.dart';
 class HistoryPage extends StatefulWidget{
   const HistoryPage({super.key});
